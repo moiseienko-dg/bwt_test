@@ -1,1 +1,0 @@
-# bwt_test
