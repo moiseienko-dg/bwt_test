@@ -35,7 +35,7 @@ class Router {
       $path = 'application\controllers\\' .
        ucfirst($this->params['controller']) . 'Controller';
       $action = $this->params['action'] . 'Action';
-      $controller = new $path;
+      $controller = new $path($this->params);
       $controller->$action();
     }
   }
