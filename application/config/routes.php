@@ -5,13 +5,21 @@
       'controller' => 'main',
       'action' => 'index',
     ],
-    'account/login' => [
-      'controller' => 'account',
+    'login' => [
+      'controller' => 'main',
       'action' => 'login',
     ],
-    'account/signup' => [
-      'controller' => 'account',
+    'signup' => [
+      'controller' => 'main',
       'action' => 'signup',
+    ],
+    'weather' => [
+      'controller' => 'main',
+      'action' => 'weather',
+    ],
+    'post' => [
+      'controller' => 'main',
+      'action' => 'post',
     ],
   ];
 

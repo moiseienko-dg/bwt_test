@@ -6,9 +6,20 @@ use application\core\Controller;
 
 class MainController extends Controller {
 
-  public function indexAction() {
-    $this->view->render('Главная страница');
+  public function loginAction() {
+    $this->view->layout = 'login';
+    $this->view->render('Login');
   }
+
+  public function signupAction() {
+    $this->view->layout = 'login';
+    $this->view->render('SignUp');
+  }
+
+  public function postAction() {
+    $this->view->render('Post');
+  }
+
 
 }
 
