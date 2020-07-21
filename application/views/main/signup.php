@@ -27,7 +27,7 @@
                     <label>Password</label>
                     <input class="form-control" type="password" name="password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Вход</button>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
             </form>
         </div>
     </div>

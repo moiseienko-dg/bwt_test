@@ -44,7 +44,36 @@ class Main extends Model {
     return true;
   }
 
-}
+  public function checkEmailExists($email) {
+    $params = [
+      'email' => $email,
+    ];
+    if ($this->db->column('SELECT id FROM accounts WHERE email = :email', $params)) {
+      $this->error = 'This email is already in use';
+      return false;
+    }
+    return true;
+  }
 
+  public function register($post) {
+    $params = [
+      'id' => '',
+      'first_name' => $post['first-name'],
+      'last_name' => $post['last-name'],
+      'email' => $post['email'],
+      'sex' => $post['sex'],
+      'birthday' => $post['birthday'],
+      'password' => password_hash($post['password'], PASSWORD_BCRYPT),
+    ];
+    foreach ($params as $key => $val) {
+      if (empty($val)) {
+        $params[$key] = Null;
+      }
+    }
+    $this->db->query("INSERT INTO accounts VALUES
+      (:id, :first_name, :last_name, :email, :sex, :birthday, :password)", $params);
+  }
+
+}
 
  ?>

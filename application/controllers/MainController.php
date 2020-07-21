@@ -21,6 +21,11 @@ class MainController extends Controller {
       if (!$this->model->validate(['first-name', 'last-name', 'email', 'password'], $_POST)) {
         $this->view->message('error', $this->model->error);
       }
+      elseif (!$this->model->checkEmailExists($_POST['email'])) {
+        $this->view->message('error', $this->model->error);
+      }
+      $this->model->register($_POST);
+      $this->view->location('/login');
     }
     $this->view->render('SignUp');
   }
