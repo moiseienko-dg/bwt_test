@@ -55,6 +55,25 @@ class Main extends Model {
     return true;
   }
 
+  public function checkData($email, $password) {
+		$params = [
+			'email' => $email,
+		];
+		$hash = $this->db->column('SELECT password FROM accounts WHERE email = :email', $params);
+		if (!$hash or !password_verify($password, $hash)) {
+			return false;
+		}
+		return true;
+	}
+
+  public function login($email) {
+		$params = [
+			'email' => $email,
+		];
+		$data = $this->db->row('SELECT * FROM accounts WHERE email = :email', $params);
+		$_SESSION['authorize'] = $data[0];
+	}
+
   public function register($post) {
     $params = [
       'id' => '',

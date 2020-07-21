@@ -12,8 +12,18 @@ class MainController extends Controller {
 
   public function loginAction() {
     $this->view->layout = 'login';
-    $this->view->render('Login');
-  }
+		if (!empty($_POST)) {
+			if (!$this->model->validate(['email', 'password'], $_POST)) {
+				$this->view->message('error', $this->model->error);
+			}
+			elseif (!$this->model->checkData($_POST['email'], $_POST['password'])) {
+				$this->view->message('error', 'Email or Login is incorrect');
+			}
+			$this->model->login($_POST['email']);
+			$this->view->location('/post');
+		}
+		$this->view->render('Login');
+	}
 
   public function signupAction() {
     $this->view->layout = 'login';

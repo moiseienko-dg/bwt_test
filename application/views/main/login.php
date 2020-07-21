@@ -4,14 +4,14 @@
         <div class="card-body">
             <form action="/login" method="post">
                 <div class="form-group">
-                    <label>Login</label>
-                    <input class="form-control" type="text" name="login">
+                    <label>Email</label>
+                    <input class="form-control" type="text" name="email">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
                     <input class="form-control" type="password" name="password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Вход</button>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
         </div>
     </div>
