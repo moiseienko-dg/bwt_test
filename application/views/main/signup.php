@@ -13,7 +13,19 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" type="text" name="Email">
+                    <input class="form-control" type="text" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Sex</label>
+                    <input class="form-control" type="text" name="sex">
+                </div>
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <input class="form-control" type="date" name="birthday">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="password" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Вход</button>
             </form>
