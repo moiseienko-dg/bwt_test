@@ -17,10 +17,8 @@
             <?php else: ?>
                 <?php foreach ($list as $val): ?>
                     <div class="post-preview">
-                        <a href="/post/<?php echo $val['id']; ?>">
-                            <h2 class="post-title"><?php echo htmlspecialchars($val['first_name'], ENT_QUOTES); ?></h2>
-                            <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
-                        </a>
+                      <h2 class="post-title"><?php echo htmlspecialchars($val['first_name'], ENT_QUOTES); ?></h2>
+                      <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
                     </div>
                     <hr>
                 <?php endforeach; ?>

@@ -80,6 +80,19 @@ class Main extends Model {
 		$this->db->query('INSERT INTO posts VALUES (DEFAULT, :first_name, :description, :email)', $params);
 	}
 
+  public function postsList($route) {
+		$max = 10;
+		$params = [
+			'max' => $max,
+			'start' => ((($route['page'] ?? 1) - 1) * $max),
+		];
+		return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
+	}
+
+  public function postCount() {
+    return $this->db->column('SELECT COUNT(id) FROM posts');
+  }
+
   public function checkEmailExists($email) {
     $params = [
       'email' => $email,
