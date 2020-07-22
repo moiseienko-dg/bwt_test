@@ -6,6 +6,8 @@ use application\core\Model;
 
 class Main extends Model {
 
+  public $error;
+
   public function validate($input, $post) {
     $required_fields = [
       'first-name' => 'First name',
@@ -44,6 +46,40 @@ class Main extends Model {
     return true;
   }
 
+  public function addValidate($post) {
+    $textLen = strlen($post['description']);
+    $params = [
+      'email' => $post['email'],
+    ];
+    $data = $this->db->row('SELECT * FROM accounts WHERE email = :email', $params);
+    if (empty($data)) {
+      $this->error = 'No such email';
+      return false;
+    }
+    elseif ($post['first-name'] != $_SESSION['authorize']['first_name']) {
+      $this->error = 'This is not your name';
+      return false;
+    }
+    elseif ($data[0]['email'] != $_SESSION['authorize']['email']) {
+      $this->error = 'This is not your email';
+      return false;
+    }
+    elseif ($textLen < 10 or $textLen > 500) {
+      $this->error = 'Text have to be from 10 to 500 symbols';
+      return false;
+    }
+    return true;
+  }
+
+  public function postAdd($post) {
+		$params = [
+			'first_name' => $post['first-name'],
+			'description' => $post['description'],
+      'email' => $post['email'],
+		];
+		$this->db->query('INSERT INTO posts VALUES (DEFAULT, :first_name, :description, :email)', $params);
+	}
+
   public function checkEmailExists($email) {
     $params = [
       'email' => $email,
@@ -76,7 +112,6 @@ class Main extends Model {
 
   public function register($post) {
     $params = [
-      'id' => '',
       'first_name' => $post['first-name'],
       'last_name' => $post['last-name'],
       'email' => $post['email'],
@@ -90,7 +125,7 @@ class Main extends Model {
       }
     }
     $this->db->query("INSERT INTO accounts VALUES
-      (:id, :first_name, :last_name, :email, :sex, :birthday, :password)", $params);
+      (DEFAULT, :first_name, :last_name, :email, :sex, :birthday, :password)", $params);
   }
 
 }

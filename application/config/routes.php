@@ -21,6 +21,10 @@
       'controller' => 'main',
       'action' => 'post',
     ],
+    'add' => [
+      'controller' => 'main',
+      'action' => 'add',
+    ],
   ];
 
  ?>

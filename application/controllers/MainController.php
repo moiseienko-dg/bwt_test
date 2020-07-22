@@ -7,6 +7,7 @@ use application\core\Controller;
 class MainController extends Controller {
 
   public function indexAction() {
+    $this->view->layout = 'default';
     $this->view->render('Main');
   }
 
@@ -42,6 +43,17 @@ class MainController extends Controller {
 
   public function postAction() {
     $this->view->render('Post');
+  }
+
+  public function addAction() {
+    if (!empty($_POST)) {
+      if (!$this->model->addValidate($_POST)){
+        $this->view->message('error', $this->model->error);
+      }
+      $this->model->postAdd($_POST);
+      $this->view->message('success', 'feedback added');
+    }
+    $this->view->render('Add');
   }
 
 
