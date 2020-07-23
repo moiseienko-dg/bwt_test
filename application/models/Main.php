@@ -153,7 +153,7 @@ class Main extends Model {
 
   public function dataWheather() {
     $client = new Client([
-      'headers' => ['User-Agent' => $_SERVER['HTTP_USER_AGENT']]
+      'headers' => ['User-Agent' => 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0']
     ]);
     $response = $client->request('GET', 'http://www.gismeteo.ua/city/daily/5093/');
     return $response->getBody()->getContents();
