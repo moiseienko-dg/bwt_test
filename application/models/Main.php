@@ -3,6 +3,7 @@
 namespace application\models;
 
 use application\core\Model;
+use GuzzleHttp\Client;
 
 class Main extends Model {
 
@@ -148,6 +149,14 @@ class Main extends Model {
     }
     $this->db->query("INSERT INTO accounts VALUES
       (DEFAULT, :first_name, :last_name, :email, :sex, :birthday, :password)", $params);
+  }
+
+  public function dataWheather() {
+    $client = new Client([
+      'headers' => ['User-Agent' => $_SERVER['HTTP_USER_AGENT']]
+    ]);
+    $response = $client->request('GET', 'http://www.gismeteo.ua/city/daily/5093/');
+    return $response->getBody()->getContents();
   }
 
 }

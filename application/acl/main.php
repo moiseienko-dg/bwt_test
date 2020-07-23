@@ -9,6 +9,7 @@ return [
   'authorize' => [
     'post',
     'add',
+    'weather'
   ],
 ]
 

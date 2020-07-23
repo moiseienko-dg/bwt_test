@@ -22,7 +22,7 @@ class MainController extends Controller {
 				$this->view->message('error', 'Email or Login is incorrect');
 			}
 			$this->model->login($_POST['email']);
-			$this->view->location('/post');
+			$this->view->location('/weather');
 		}
 		$this->view->render('Login');
 	}
@@ -63,6 +63,12 @@ class MainController extends Controller {
     $this->view->render('Add');
   }
 
+  public function weatherAction() {
+    $vars = [
+      'data' => $this->model->dataWheather(),
+    ];
+    $this->view->render('Weather', $vars);
+  }
 
 }
 
