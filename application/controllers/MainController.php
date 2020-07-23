@@ -52,6 +52,7 @@ class MainController extends Controller {
   }
 
   public function addAction() {
+    $this->view->layout = 'add';
     if (!empty($_POST)) {
       if (!$this->model->addValidate($_POST)){
         $this->view->message('error', $this->model->error);

@@ -28,6 +28,11 @@
                         <p><textarea rows="5" class="form-control" name="description" placeholder="Text"></textarea></p>
                     </div>
                 </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <div class="g-recaptcha" data-sitekey="6LeV5rQZAAAAAJnkww40eFGT8tDp1Myi_bfmuVMn"></div>
+                    </div>
+                </div>
                 <br>
                 <div id="success"></div>
                 <div class="form-group">

@@ -48,6 +48,11 @@ class Main extends Model {
 
   public function addValidate($post) {
     $textLen = strlen($post['description']);
+    $secret_key = '6LeV5rQZAAAAABSZF9RAp7ScOvTmlz5n9Ev7_WLb';
+    $response_key = $post['g-recaptcha-response'];
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$response_key";
+    $response = file_get_contents($url);
+    $response = json_decode($response);
     $params = [
       'email' => $post['email'],
     ];
@@ -66,6 +71,10 @@ class Main extends Model {
     }
     elseif ($textLen < 10 or $textLen > 500) {
       $this->error = 'Text have to be from 10 to 500 symbols';
+      return false;
+    }
+    elseif (!$response->success) {
+      $this->error = 'Check captcha';
       return false;
     }
     return true;
