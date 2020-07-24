@@ -65,6 +65,7 @@ class MainController extends Controller {
 
   public function weatherAction() {
     $vars = [
+      // 'temperature' => $this->model->dataWheather()['temperature'],
       'data' => $this->model->dataWheather(),
     ];
     $this->view->render('Weather', $vars);

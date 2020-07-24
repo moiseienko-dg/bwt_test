@@ -9,6 +9,17 @@
         </div>
     </div>
 </header>
-<div class="container">
-  <?php echo $data; ?>
+<h1 class="align-width">Weather today</h1>
+<div class="align-width">
+  <div class="flexbox clearfix">
+    <div class="main">
+      <div class="forecast_frame hw_wrap">
+        <div class="widget__wrap">
+          <?php
+          echo $data;
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

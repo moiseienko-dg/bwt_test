@@ -1,7 +1,7 @@
 <?php
 
   require 'application/lib/dev.php';
-  require 'vendor/autoload.php';
+  require 'application/lib/simple_html_dom.php';
 
   use application\core\Router;
 
