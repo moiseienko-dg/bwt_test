@@ -6,11 +6,11 @@
       'action' => 'index',
     ],
     'login' => [
-      'controller' => 'main',
+      'controller' => 'account',
       'action' => 'login',
     ],
     'signup' => [
-      'controller' => 'main',
+      'controller' => 'account',
       'action' => 'signup',
     ],
     'weather' => [

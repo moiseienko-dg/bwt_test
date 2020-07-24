@@ -2,10 +2,8 @@
 
 return [
   'all' => [
-		'index',
-    'signup',
-    'login',
-	],
+    'index',
+  ],
   'authorize' => [
     'post',
     'add',
