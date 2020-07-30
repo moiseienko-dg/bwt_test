@@ -9,7 +9,7 @@ abstract class Model {
   public $db;
 
   function __construct() {
-    $this->db = new Db;
+    $this->db = Db::getInstance();
   }
 }
 

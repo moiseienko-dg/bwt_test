@@ -6,9 +6,10 @@ use PDO;
 
 class Db {
 
-  protected $db;
+  private $db;
+  private static $instance;
 
-  public function __construct()
+  private function __construct()
   {
     $config = require 'application/config/db.php';
     $this->db = new PDO('mysql:host=' .
@@ -18,6 +19,16 @@ class Db {
     $config['password']
     );
   }
+
+  private function __clone () {}
+	private function __wakeup () {}
+
+	public static function getInstance() {
+		if (self::$instance === null) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
 
   public function query($sql, $params = []) {
 		$stmt = $this->db->prepare($sql);
